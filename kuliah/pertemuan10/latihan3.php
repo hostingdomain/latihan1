@@ -1,14 +1,6 @@
 <?php
-// koneksi ke DB & pilih database
-$conn = mysqli_connect('localhost', 'root', '', 'pw');
-//query isi table mahasiswa
-$hasil = mysqli_query($conn, 'SELECT * FROM mahasiswa');
-//ubah data ke dalam array
-$rows = [];
-while ($row = mysqli_fetch_assoc($hasil)) {
-  $rows[] = $row;
-}
-$mahasiswa = $rows;
+require 'function.php';
+$mahasiswa = query("SELECT * FROM mahasiswa");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +18,7 @@ $mahasiswa = $rows;
     <tr>
       <th>#</th>
       <th>Gambar</th>
-      <th>NRP</th>
       <th>Nama</th>
-      <th>Email</th>
-      <th>Jurusan</th>
       <th>Aksi</th>
     </tr>
     <?php $i = 1;
@@ -37,11 +26,8 @@ $mahasiswa = $rows;
       <tr>
         <td><?= $i++; ?></td>
         <td><img src="img/<?= $m['gambar']; ?>" width="60"></td>
-        <td><?= $m['nrp']; ?></td>
         <td><?= $m['nama']; ?></td>
-        <td><?= $m['email']; ?></td>
-        <td><?= $m['jurusan']; ?></td>
-        <td><a href="">Ubah</a> | <a href="">Hapus</a></td>
+        <td><a href="detail.php?id=<?= $m['id']; ?> ">Lihat detail</a></td>
       </tr>
     <?php endforeach; ?>
   </table>

@@ -1,14 +1,6 @@
 <?php
-// koneksi ke DB & pilih database
-$conn = mysqli_connect('localhost', 'root', '', 'pw');
-//query isi table mahasiswa
-$hasil = mysqli_query($conn, 'SELECT * FROM mahasiswa');
-//ubah data ke dalam array
-$rows = [];
-while ($row = mysqli_fetch_assoc($hasil)) {
-  $rows[] = $row;
-}
-$mahasiswa = $rows;
+require 'function.php';
+$mahasiswa = query("SELECT * FROM mahasiswa");
 ?>
 <!DOCTYPE html>
 <html lang="en">
