@@ -1,6 +1,6 @@
 <?php
 require 'function.php';
-$mahasiswa = query("SELECT * FROM mahasiswa");
+$resources = query("SELECT * FROM mahasiswa");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,11 +9,13 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daftar Mahasiswa</title>
+  <title>List Resources</title>
 </head>
 
 <body>
-  <h3>Daftar Mahasiswa</h3>
+  <h3>List Resources</h3>
+  <a href="tambah.php">Add Resource</a>
+  <br></br>
   <table border="1" cellpadding="10" cellspacing="0">
     <tr>
       <th>#</th>
@@ -22,7 +24,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
       <th>Aksi</th>
     </tr>
     <?php $i = 1;
-    foreach ($mahasiswa as $m) : ?>
+    foreach ($resources as $m) : ?>
       <tr>
         <td><?= $i++; ?></td>
         <td><img src="img/<?= $m['gambar']; ?>" width="60"></td>
